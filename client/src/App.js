@@ -1,13 +1,14 @@
 import React, {Component} from 'react';
 
-import 'boostrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+import AppNavbar from './components/AppNavbar';
 
 class App extends Component{
   render(){
     return (
       <div className="App">
-        <h1>hello</h1>
+        <AppNavbar />
       </div>
     );
   }
