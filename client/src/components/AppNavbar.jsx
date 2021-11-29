@@ -21,7 +21,6 @@ class AppNavbar extends Component {
     }
     render() {
         return (
-
             <div>
                 <Navbar dark color="dark" >
                     <NavbarBrand className="me-auto" href="/">reactstrap</NavbarBrand>
@@ -44,8 +43,6 @@ class AppNavbar extends Component {
 
     }
     // <Navbar color="dark" dark expand="sm" className="mb-5">
-
-
 }
 
 export default AppNavbar
