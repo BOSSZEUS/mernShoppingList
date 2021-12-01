@@ -3,18 +3,19 @@ import {Container, ListGroup, ListGroupItem, Button} from 'reactstrap'
 import {CSSTransition, TransitionGroup } from 'react-transition-group'
 import {v4 as uuid} from 'uuid'
 
+import {connect } from 'react-redux'
+import {getItems} from '../actions/itemActions'
+import { PropTypes } from "prop-types";
+
 
 class ShoppingList extends Component{
-state = {
-    items: [
-        {id: uuid(), name: 'Eggs'},
-        {id: uuid(), name: 'Milk'},
-        {id: uuid(), name: 'Water'},
-    ]
-}
+    componentDidMount(){
+        this.props.getItems()
+    }
 
     render () {
-        const {items} = this.state
+        
+        const {items} = this.props.item
         return (
             <Container>
                     <Button color="dark" style={{marginBottom: '5rem', marginTop: '2rem'}} onClick={() => {
@@ -49,5 +50,15 @@ state = {
         )
     }
 }
+// when you bring in an action from redux it's set as a prop
+ShoppingList.propTypes = {
+    getItems: PropTypes.func.isRequired,
+    item: PropTypes.object.isRequired
+}
 
-export default ShoppingList
+const mapStateToProps = (state) => ({
+    // from our reducer item
+    item: state.item
+})
+// mapstatetoprops maps our item state into component property
+export default connect(mapStateToProps, {getItems})(ShoppingList)
